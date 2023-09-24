@@ -5,7 +5,7 @@ ADD requirements.txt /home/ubuntu/requirements.txt
 
 # Python venv for neuron
 RUN python3.10 -m venv aws_neuron_venv_pytorch && \
-    source aws_neuron_venv_pytorch/bin/activate && \
+    . aws_neuron_venv_pytorch/bin/activate && \
     python -m pip install -U pip && \
     pip install ipykernel && \
     python3.10 -m ipykernel install --user --name aws_neuron_venv_pytorch --display-name "Python (torch-neuronx)" && \
@@ -19,7 +19,7 @@ RUN python3.10 -m venv aws_neuron_venv_pytorch && \
 
 # Python venv for CUDA
 RUN python3.10 -m venv aws_cuda_venv_pytorch && \
-    source aws_cuda_venv_pytorch/bin/activate && \
+    . aws_cuda_venv_pytorch/bin/activate && \
     python -m pip install -U pip && \
     python -m pip install wget && \
     python -m pip install awscli && \
