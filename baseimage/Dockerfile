@@ -11,10 +11,10 @@ RUN python3.10 -m venv aws_neuron_venv_pytorch && \
     python3.10 -m ipykernel install --user --name aws_neuron_venv_pytorch --display-name "Python (torch-neuronx)" && \
     pip install jupyter notebook && \
     pip install environment_kernels && \
-    python -m pip config set global.extra-index-url https://pip.repos.neuron.amazonaws.com && \
+    #python -m pip config set global.extra-index-url https://pip.repos.neuron.amazonaws.com && \
     python -m pip install wget && \ 
     python -m pip install awscli && \
-    python -m pip install neuronx-cc==2.* torch-neuronx torchvision && \
+    #python -m pip install neuronx-cc==2.* torch-neuronx torchvision && \
     deactivate
 
 # Python venv for CUDA
