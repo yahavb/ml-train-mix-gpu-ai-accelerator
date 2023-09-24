@@ -1,6 +1,8 @@
 FROM public.ecr.aws/docker/library/ubuntu:23.10
 
-RUN apt-get install -y python3.10-venv g++ 
+RUN ls -l /home
+
+RUN apt update && apt-get install -y python3.10-venv g++ 
 ADD requirements.txt /home/ubuntu/requirements.txt
 
 # Python venv for neuron
@@ -23,6 +25,6 @@ RUN python3.10 -m venv aws_cuda_venv_pytorch && \
     python -m pip install -U pip && \
     python -m pip install wget && \
     python -m pip install awscli && \
-    pip install -r requirements.txt && \
+    pip install -r /home/ubuntu/requirements.txt && \
     pip install --force-reinstall --no-deps protobuf==3.20.0 && \
     deactivate
