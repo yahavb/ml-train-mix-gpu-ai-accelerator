@@ -1,8 +1,6 @@
-FROM public.ecr.aws/docker/library/ubuntu:23.10
+FROM public.ecr.aws/docker/library/ubuntu:22.04
 
-RUN ls -la /home/ubuntu
-
-RUN apt update && apt-get install -y python3-venv g++ 
+RUN apt update && apt-get install -y python3.10-venv g++ 
 ADD requirements.txt /home/ubuntu/requirements.txt
 
 # Python venv for neuron
