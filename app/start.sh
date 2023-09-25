@@ -30,5 +30,3 @@ if [[ $instance_type == "trn1n.32xlarge" ]]; then
   . aws_neuron_venv_pytorch/bin/activate
   ~/train_kinetics_trn.sh
 fi
-
-

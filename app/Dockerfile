@@ -1,21 +1,7 @@
 FROM public.ecr.aws/docker/library/ubuntu:22.04
 
-RUN apt update && apt-get install -y python3-dev python3.10-venv g++ 
+RUN apt update -y && apt-get install -y python3-dev python3.10-venv g++ 
 COPY * /home/ubuntu/
-
-# Python venv for neuron
-RUN python3.10 -m venv aws_neuron_venv_pytorch && \
-    . aws_neuron_venv_pytorch/bin/activate && \
-    python -m pip install -U pip && \
-    pip install ipykernel && \
-    python3.10 -m ipykernel install --user --name aws_neuron_venv_pytorch --display-name "Python (torch-neuronx)" && \
-    pip install jupyter notebook && \
-    pip install environment_kernels && \
-    #python -m pip config set global.extra-index-url https://pip.repos.neuron.amazonaws.com && \
-    python -m pip install wget && \ 
-    python -m pip install awscli && \
-    #python -m pip install neuronx-cc==2.* torch-neuronx torchvision && \
-    deactivate
 
 # Python venv for CUDA
 RUN python3.10 -m venv aws_cuda_venv_pytorch && \
