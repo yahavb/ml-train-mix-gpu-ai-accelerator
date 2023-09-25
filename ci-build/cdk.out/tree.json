@@ -4,13 +4,13 @@
     "id": "App",
     "path": "",
     "children": {
-      "BasePipelineStack": {
-        "id": "BasePipelineStack",
-        "path": "BasePipelineStack",
+      "PipelineStack": {
+        "id": "PipelineStack",
+        "path": "PipelineStack",
         "children": {
           "BASEREPO": {
             "id": "BASEREPO",
-            "path": "BasePipelineStack/BASEREPO",
+            "path": "PipelineStack/BASEREPO",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnParameter",
               "version": "2.97.0"
@@ -18,7 +18,7 @@
           },
           "BASEIMAGETAG": {
             "id": "BASEIMAGETAG",
-            "path": "BasePipelineStack/BASEIMAGETAG",
+            "path": "PipelineStack/BASEIMAGETAG",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnParameter",
               "version": "2.97.0"
@@ -26,7 +26,7 @@
           },
           "BASEIMAGEAMDTAG": {
             "id": "BASEIMAGEAMDTAG",
-            "path": "BasePipelineStack/BASEIMAGEAMDTAG",
+            "path": "PipelineStack/BASEIMAGEAMDTAG",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnParameter",
               "version": "2.97.0"
@@ -34,7 +34,7 @@
           },
           "BASEIMAGEARMTAG": {
             "id": "BASEIMAGEARMTAG",
-            "path": "BasePipelineStack/BASEIMAGEARMTAG",
+            "path": "PipelineStack/BASEIMAGEARMTAG",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnParameter",
               "version": "2.97.0"
@@ -42,7 +42,7 @@
           },
           "GITHUBOAUTHTOKEN": {
             "id": "GITHUBOAUTHTOKEN",
-            "path": "BasePipelineStack/GITHUBOAUTHTOKEN",
+            "path": "PipelineStack/GITHUBOAUTHTOKEN",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnParameter",
               "version": "2.97.0"
@@ -50,7 +50,7 @@
           },
           "GITHUBUSER": {
             "id": "GITHUBUSER",
-            "path": "BasePipelineStack/GITHUBUSER",
+            "path": "PipelineStack/GITHUBUSER",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnParameter",
               "version": "2.97.0"
@@ -58,7 +58,7 @@
           },
           "GITHUBREPO": {
             "id": "GITHUBREPO",
-            "path": "BasePipelineStack/GITHUBREPO",
+            "path": "PipelineStack/GITHUBREPO",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnParameter",
               "version": "2.97.0"
@@ -66,7 +66,7 @@
           },
           "GITHUBBRANCH": {
             "id": "GITHUBBRANCH",
-            "path": "BasePipelineStack/GITHUBBRANCH",
+            "path": "PipelineStack/GITHUBBRANCH",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnParameter",
               "version": "2.97.0"
@@ -74,11 +74,11 @@
           },
           "base_repo": {
             "id": "base_repo",
-            "path": "BasePipelineStack/base_repo",
+            "path": "PipelineStack/base_repo",
             "children": {
               "Resource": {
                 "id": "Resource",
-                "path": "BasePipelineStack/base_repo/Resource",
+                "path": "PipelineStack/base_repo/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::ECR::Repository",
                   "aws:cdk:cloudformation:props": {
@@ -103,11 +103,11 @@
           },
           "BaseCodeBuildDeployRole": {
             "id": "BaseCodeBuildDeployRole",
-            "path": "BasePipelineStack/BaseCodeBuildDeployRole",
+            "path": "PipelineStack/BaseCodeBuildDeployRole",
             "children": {
               "ImportBaseCodeBuildDeployRole": {
                 "id": "ImportBaseCodeBuildDeployRole",
-                "path": "BasePipelineStack/BaseCodeBuildDeployRole/ImportBaseCodeBuildDeployRole",
+                "path": "PipelineStack/BaseCodeBuildDeployRole/ImportBaseCodeBuildDeployRole",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.Resource",
                   "version": "2.97.0"
@@ -115,7 +115,7 @@
               },
               "Resource": {
                 "id": "Resource",
-                "path": "BasePipelineStack/BaseCodeBuildDeployRole/Resource",
+                "path": "PipelineStack/BaseCodeBuildDeployRole/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::IAM::Role",
                   "aws:cdk:cloudformation:props": {
@@ -141,11 +141,11 @@
               },
               "DefaultPolicy": {
                 "id": "DefaultPolicy",
-                "path": "BasePipelineStack/BaseCodeBuildDeployRole/DefaultPolicy",
+                "path": "PipelineStack/BaseCodeBuildDeployRole/DefaultPolicy",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "BasePipelineStack/BaseCodeBuildDeployRole/DefaultPolicy/Resource",
+                    "path": "PipelineStack/BaseCodeBuildDeployRole/DefaultPolicy/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
                       "aws:cdk:cloudformation:props": {
@@ -468,11 +468,11 @@
           },
           "githubSecret": {
             "id": "githubSecret",
-            "path": "BasePipelineStack/githubSecret",
+            "path": "PipelineStack/githubSecret",
             "children": {
               "Resource": {
                 "id": "Resource",
-                "path": "BasePipelineStack/githubSecret/Resource",
+                "path": "PipelineStack/githubSecret/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::SecretsManager::Secret",
                   "aws:cdk:cloudformation:props": {
@@ -503,7 +503,7 @@
           },
           "githubOAuthTokenRuntimeOutput1": {
             "id": "githubOAuthTokenRuntimeOutput1",
-            "path": "BasePipelineStack/githubOAuthTokenRuntimeOutput1",
+            "path": "PipelineStack/githubOAuthTokenRuntimeOutput1",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnOutput",
               "version": "2.97.0"
@@ -511,7 +511,7 @@
           },
           "githubOAuthTokenRuntimeOutput2": {
             "id": "githubOAuthTokenRuntimeOutput2",
-            "path": "BasePipelineStack/githubOAuthTokenRuntimeOutput2",
+            "path": "PipelineStack/githubOAuthTokenRuntimeOutput2",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnOutput",
               "version": "2.97.0"
@@ -519,11 +519,11 @@
           },
           "BaseImageArmBuild": {
             "id": "BaseImageArmBuild",
-            "path": "BasePipelineStack/BaseImageArmBuild",
+            "path": "PipelineStack/BaseImageArmBuild",
             "children": {
               "Resource": {
                 "id": "Resource",
-                "path": "BasePipelineStack/BaseImageArmBuild/Resource",
+                "path": "PipelineStack/BaseImageArmBuild/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::CodeBuild::Project",
                   "aws:cdk:cloudformation:props": {
@@ -574,7 +574,7 @@
                             {
                               "Ref": "BASEIMAGEARMTAG"
                             },
-                            "\\\"\",\n        \"cd baseimage\",\n        \"chmod +x ./build.sh && ./build.sh\"\n      ]\n    }\n  },\n  \"artifacts\": {\n    \"files\": [\n      \"imageDetail.json\"\n    ]\n  }\n}"
+                            "\\\"\",\n        \"cd app\",\n        \"chmod +x ./build.sh && ./build.sh\"\n      ]\n    }\n  },\n  \"artifacts\": {\n    \"files\": [\n      \"imageDetail.json\"\n    ]\n  }\n}"
                           ]
                         ]
                       }
@@ -594,11 +594,11 @@
           },
           "BaseImageAmdBuild": {
             "id": "BaseImageAmdBuild",
-            "path": "BasePipelineStack/BaseImageAmdBuild",
+            "path": "PipelineStack/BaseImageAmdBuild",
             "children": {
               "Resource": {
                 "id": "Resource",
-                "path": "BasePipelineStack/BaseImageAmdBuild/Resource",
+                "path": "PipelineStack/BaseImageAmdBuild/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::CodeBuild::Project",
                   "aws:cdk:cloudformation:props": {
@@ -649,7 +649,7 @@
                             {
                               "Ref": "BASEIMAGEAMDTAG"
                             },
-                            "\\\"\",\n        \"cd baseimage\",\n        \"chmod +x ./build.sh && ./build.sh\"\n      ]\n    }\n  },\n  \"artifacts\": {\n    \"files\": [\n      \"imageDetail.json\"\n    ]\n  }\n}"
+                            "\\\"\",\n        \"cd app\",\n        \"chmod +x ./build.sh && ./build.sh\"\n      ]\n    }\n  },\n  \"artifacts\": {\n    \"files\": [\n      \"imageDetail.json\"\n    ]\n  }\n}"
                           ]
                         ]
                       }
@@ -669,11 +669,11 @@
           },
           "BaseImageAmdBuildAssembly": {
             "id": "BaseImageAmdBuildAssembly",
-            "path": "BasePipelineStack/BaseImageAmdBuildAssembly",
+            "path": "PipelineStack/BaseImageAmdBuildAssembly",
             "children": {
               "Resource": {
                 "id": "Resource",
-                "path": "BasePipelineStack/BaseImageAmdBuildAssembly/Resource",
+                "path": "PipelineStack/BaseImageAmdBuildAssembly/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::CodeBuild::Project",
                   "aws:cdk:cloudformation:props": {
@@ -728,7 +728,7 @@
                             {
                               "Ref": "BASEIMAGETAG"
                             },
-                            "\\\"\",\n        \"cd baseimage\",\n        \"chmod +x ./assemble_multiarch_image.sh && ./assemble_multiarch_image.sh\"\n      ]\n    }\n  },\n  \"artifacts\": {\n    \"files\": [\n      \"imageDetail.json\"\n    ]\n  }\n}"
+                            "\\\"\",\n        \"cd app\",\n        \"chmod +x ./assemble_multiarch_image.sh && ./assemble_multiarch_image.sh\"\n      ]\n    }\n  },\n  \"artifacts\": {\n    \"files\": [\n      \"imageDetail.json\"\n    ]\n  }\n}"
                           ]
                         ]
                       }
@@ -748,15 +748,15 @@
           },
           "BuildBasePipeline": {
             "id": "BuildBasePipeline",
-            "path": "BasePipelineStack/BuildBasePipeline",
+            "path": "PipelineStack/BuildBasePipeline",
             "children": {
               "ArtifactsBucketEncryptionKey": {
                 "id": "ArtifactsBucketEncryptionKey",
-                "path": "BasePipelineStack/BuildBasePipeline/ArtifactsBucketEncryptionKey",
+                "path": "PipelineStack/BuildBasePipeline/ArtifactsBucketEncryptionKey",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "BasePipelineStack/BuildBasePipeline/ArtifactsBucketEncryptionKey/Resource",
+                    "path": "PipelineStack/BuildBasePipeline/ArtifactsBucketEncryptionKey/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::KMS::Key",
                       "aws:cdk:cloudformation:props": {
@@ -799,15 +799,15 @@
               },
               "ArtifactsBucketEncryptionKeyAlias": {
                 "id": "ArtifactsBucketEncryptionKeyAlias",
-                "path": "BasePipelineStack/BuildBasePipeline/ArtifactsBucketEncryptionKeyAlias",
+                "path": "PipelineStack/BuildBasePipeline/ArtifactsBucketEncryptionKeyAlias",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "BasePipelineStack/BuildBasePipeline/ArtifactsBucketEncryptionKeyAlias/Resource",
+                    "path": "PipelineStack/BuildBasePipeline/ArtifactsBucketEncryptionKeyAlias/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::KMS::Alias",
                       "aws:cdk:cloudformation:props": {
-                        "aliasName": "alias/codepipeline-basepipelinestackbuildbasepipeline117bc62c",
+                        "aliasName": "alias/codepipeline-pipelinestackbuildbasepipeline71aca8fb",
                         "targetKeyId": {
                           "Fn::GetAtt": [
                             "BuildBasePipelineArtifactsBucketEncryptionKey04467E09",
@@ -829,11 +829,11 @@
               },
               "ArtifactsBucket": {
                 "id": "ArtifactsBucket",
-                "path": "BasePipelineStack/BuildBasePipeline/ArtifactsBucket",
+                "path": "PipelineStack/BuildBasePipeline/ArtifactsBucket",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "BasePipelineStack/BuildBasePipeline/ArtifactsBucket/Resource",
+                    "path": "PipelineStack/BuildBasePipeline/ArtifactsBucket/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
                       "aws:cdk:cloudformation:props": {
@@ -867,11 +867,11 @@
                   },
                   "Policy": {
                     "id": "Policy",
-                    "path": "BasePipelineStack/BuildBasePipeline/ArtifactsBucket/Policy",
+                    "path": "PipelineStack/BuildBasePipeline/ArtifactsBucket/Policy",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "BasePipelineStack/BuildBasePipeline/ArtifactsBucket/Policy/Resource",
+                        "path": "PipelineStack/BuildBasePipeline/ArtifactsBucket/Policy/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::S3::BucketPolicy",
                           "aws:cdk:cloudformation:props": {
@@ -938,11 +938,11 @@
               },
               "Role": {
                 "id": "Role",
-                "path": "BasePipelineStack/BuildBasePipeline/Role",
+                "path": "PipelineStack/BuildBasePipeline/Role",
                 "children": {
                   "ImportRole": {
                     "id": "ImportRole",
-                    "path": "BasePipelineStack/BuildBasePipeline/Role/ImportRole",
+                    "path": "PipelineStack/BuildBasePipeline/Role/ImportRole",
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.Resource",
                       "version": "2.97.0"
@@ -950,7 +950,7 @@
                   },
                   "Resource": {
                     "id": "Resource",
-                    "path": "BasePipelineStack/BuildBasePipeline/Role/Resource",
+                    "path": "PipelineStack/BuildBasePipeline/Role/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::IAM::Role",
                       "aws:cdk:cloudformation:props": {
@@ -975,11 +975,11 @@
                   },
                   "DefaultPolicy": {
                     "id": "DefaultPolicy",
-                    "path": "BasePipelineStack/BuildBasePipeline/Role/DefaultPolicy",
+                    "path": "PipelineStack/BuildBasePipeline/Role/DefaultPolicy",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "BasePipelineStack/BuildBasePipeline/Role/DefaultPolicy/Resource",
+                        "path": "PipelineStack/BuildBasePipeline/Role/DefaultPolicy/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
                           "aws:cdk:cloudformation:props": {
@@ -1098,7 +1098,7 @@
               },
               "Resource": {
                 "id": "Resource",
-                "path": "BasePipelineStack/BuildBasePipeline/Resource",
+                "path": "PipelineStack/BuildBasePipeline/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::CodePipeline::Pipeline",
                   "aws:cdk:cloudformation:props": {
@@ -1250,15 +1250,15 @@
               },
               "Source": {
                 "id": "Source",
-                "path": "BasePipelineStack/BuildBasePipeline/Source",
+                "path": "PipelineStack/BuildBasePipeline/Source",
                 "children": {
                   "GitHub_Source": {
                     "id": "GitHub_Source",
-                    "path": "BasePipelineStack/BuildBasePipeline/Source/GitHub_Source",
+                    "path": "PipelineStack/BuildBasePipeline/Source/GitHub_Source",
                     "children": {
                       "WebhookResource": {
                         "id": "WebhookResource",
-                        "path": "BasePipelineStack/BuildBasePipeline/Source/GitHub_Source/WebhookResource",
+                        "path": "PipelineStack/BuildBasePipeline/Source/GitHub_Source/WebhookResource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::CodePipeline::Webhook",
                           "aws:cdk:cloudformation:props": {
@@ -1299,19 +1299,19 @@
               },
               "BaseImageBuild": {
                 "id": "BaseImageBuild",
-                "path": "BasePipelineStack/BuildBasePipeline/BaseImageBuild",
+                "path": "PipelineStack/BuildBasePipeline/BaseImageBuild",
                 "children": {
                   "BaseImageArmBuildX": {
                     "id": "BaseImageArmBuildX",
-                    "path": "BasePipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageArmBuildX",
+                    "path": "PipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageArmBuildX",
                     "children": {
                       "CodePipelineActionRole": {
                         "id": "CodePipelineActionRole",
-                        "path": "BasePipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageArmBuildX/CodePipelineActionRole",
+                        "path": "PipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageArmBuildX/CodePipelineActionRole",
                         "children": {
                           "ImportCodePipelineActionRole": {
                             "id": "ImportCodePipelineActionRole",
-                            "path": "BasePipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageArmBuildX/CodePipelineActionRole/ImportCodePipelineActionRole",
+                            "path": "PipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageArmBuildX/CodePipelineActionRole/ImportCodePipelineActionRole",
                             "constructInfo": {
                               "fqn": "aws-cdk-lib.Resource",
                               "version": "2.97.0"
@@ -1319,7 +1319,7 @@
                           },
                           "Resource": {
                             "id": "Resource",
-                            "path": "BasePipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageArmBuildX/CodePipelineActionRole/Resource",
+                            "path": "PipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageArmBuildX/CodePipelineActionRole/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::IAM::Role",
                               "aws:cdk:cloudformation:props": {
@@ -1355,11 +1355,11 @@
                           },
                           "DefaultPolicy": {
                             "id": "DefaultPolicy",
-                            "path": "BasePipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageArmBuildX/CodePipelineActionRole/DefaultPolicy",
+                            "path": "PipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageArmBuildX/CodePipelineActionRole/DefaultPolicy",
                             "children": {
                               "Resource": {
                                 "id": "Resource",
-                                "path": "BasePipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageArmBuildX/CodePipelineActionRole/DefaultPolicy/Resource",
+                                "path": "PipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageArmBuildX/CodePipelineActionRole/DefaultPolicy/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
                                   "aws:cdk:cloudformation:props": {
@@ -1415,15 +1415,15 @@
                   },
                   "BaseImageAmdBuildX": {
                     "id": "BaseImageAmdBuildX",
-                    "path": "BasePipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageAmdBuildX",
+                    "path": "PipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageAmdBuildX",
                     "children": {
                       "CodePipelineActionRole": {
                         "id": "CodePipelineActionRole",
-                        "path": "BasePipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageAmdBuildX/CodePipelineActionRole",
+                        "path": "PipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageAmdBuildX/CodePipelineActionRole",
                         "children": {
                           "ImportCodePipelineActionRole": {
                             "id": "ImportCodePipelineActionRole",
-                            "path": "BasePipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageAmdBuildX/CodePipelineActionRole/ImportCodePipelineActionRole",
+                            "path": "PipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageAmdBuildX/CodePipelineActionRole/ImportCodePipelineActionRole",
                             "constructInfo": {
                               "fqn": "aws-cdk-lib.Resource",
                               "version": "2.97.0"
@@ -1431,7 +1431,7 @@
                           },
                           "Resource": {
                             "id": "Resource",
-                            "path": "BasePipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageAmdBuildX/CodePipelineActionRole/Resource",
+                            "path": "PipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageAmdBuildX/CodePipelineActionRole/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::IAM::Role",
                               "aws:cdk:cloudformation:props": {
@@ -1467,11 +1467,11 @@
                           },
                           "DefaultPolicy": {
                             "id": "DefaultPolicy",
-                            "path": "BasePipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageAmdBuildX/CodePipelineActionRole/DefaultPolicy",
+                            "path": "PipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageAmdBuildX/CodePipelineActionRole/DefaultPolicy",
                             "children": {
                               "Resource": {
                                 "id": "Resource",
-                                "path": "BasePipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageAmdBuildX/CodePipelineActionRole/DefaultPolicy/Resource",
+                                "path": "PipelineStack/BuildBasePipeline/BaseImageBuild/BaseImageAmdBuildX/CodePipelineActionRole/DefaultPolicy/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
                                   "aws:cdk:cloudformation:props": {
@@ -1527,15 +1527,15 @@
                   },
                   "AssembleBaseBuilds": {
                     "id": "AssembleBaseBuilds",
-                    "path": "BasePipelineStack/BuildBasePipeline/BaseImageBuild/AssembleBaseBuilds",
+                    "path": "PipelineStack/BuildBasePipeline/BaseImageBuild/AssembleBaseBuilds",
                     "children": {
                       "CodePipelineActionRole": {
                         "id": "CodePipelineActionRole",
-                        "path": "BasePipelineStack/BuildBasePipeline/BaseImageBuild/AssembleBaseBuilds/CodePipelineActionRole",
+                        "path": "PipelineStack/BuildBasePipeline/BaseImageBuild/AssembleBaseBuilds/CodePipelineActionRole",
                         "children": {
                           "ImportCodePipelineActionRole": {
                             "id": "ImportCodePipelineActionRole",
-                            "path": "BasePipelineStack/BuildBasePipeline/BaseImageBuild/AssembleBaseBuilds/CodePipelineActionRole/ImportCodePipelineActionRole",
+                            "path": "PipelineStack/BuildBasePipeline/BaseImageBuild/AssembleBaseBuilds/CodePipelineActionRole/ImportCodePipelineActionRole",
                             "constructInfo": {
                               "fqn": "aws-cdk-lib.Resource",
                               "version": "2.97.0"
@@ -1543,7 +1543,7 @@
                           },
                           "Resource": {
                             "id": "Resource",
-                            "path": "BasePipelineStack/BuildBasePipeline/BaseImageBuild/AssembleBaseBuilds/CodePipelineActionRole/Resource",
+                            "path": "PipelineStack/BuildBasePipeline/BaseImageBuild/AssembleBaseBuilds/CodePipelineActionRole/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::IAM::Role",
                               "aws:cdk:cloudformation:props": {
@@ -1579,11 +1579,11 @@
                           },
                           "DefaultPolicy": {
                             "id": "DefaultPolicy",
-                            "path": "BasePipelineStack/BuildBasePipeline/BaseImageBuild/AssembleBaseBuilds/CodePipelineActionRole/DefaultPolicy",
+                            "path": "PipelineStack/BuildBasePipeline/BaseImageBuild/AssembleBaseBuilds/CodePipelineActionRole/DefaultPolicy",
                             "children": {
                               "Resource": {
                                 "id": "Resource",
-                                "path": "BasePipelineStack/BuildBasePipeline/BaseImageBuild/AssembleBaseBuilds/CodePipelineActionRole/DefaultPolicy/Resource",
+                                "path": "PipelineStack/BuildBasePipeline/BaseImageBuild/AssembleBaseBuilds/CodePipelineActionRole/DefaultPolicy/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
                                   "aws:cdk:cloudformation:props": {
@@ -1651,11 +1651,11 @@
           },
           "CDKMetadata": {
             "id": "CDKMetadata",
-            "path": "BasePipelineStack/CDKMetadata",
+            "path": "PipelineStack/CDKMetadata",
             "children": {
               "Default": {
                 "id": "Default",
-                "path": "BasePipelineStack/CDKMetadata/Default",
+                "path": "PipelineStack/CDKMetadata/Default",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.CfnResource",
                   "version": "2.97.0"
@@ -1669,7 +1669,7 @@
           },
           "BootstrapVersion": {
             "id": "BootstrapVersion",
-            "path": "BasePipelineStack/BootstrapVersion",
+            "path": "PipelineStack/BootstrapVersion",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnParameter",
               "version": "2.97.0"
@@ -1677,7 +1677,7 @@
           },
           "CheckBootstrapVersion": {
             "id": "CheckBootstrapVersion",
-            "path": "BasePipelineStack/CheckBootstrapVersion",
+            "path": "PipelineStack/CheckBootstrapVersion",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnRule",
               "version": "2.97.0"

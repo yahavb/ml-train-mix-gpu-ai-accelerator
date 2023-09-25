@@ -10,7 +10,7 @@ import * as secretsmanager from 'aws-cdk-lib/aws-secretsmanager';
 import * as cdk from 'aws-cdk-lib/core';
 import * as cfn from 'aws-cdk-lib/aws-cloudformation';
 
-export class BasePipelineStack extends Stack {
+export class PipelineStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
   const BASE_REPO = new CfnParameter(this,"BASEREPO",{type:"String"});
@@ -74,7 +74,7 @@ export class BasePipelineStack extends Stack {
               `export BASE_REPO="${BASE_REPO.valueAsString}"`,
               `export BASE_IMAGE_TAG="${BASE_IMAGE_ARM_TAG.valueAsString}"`,
               `export ARCH="${BASE_IMAGE_ARM_TAG.valueAsString}"`,
-              `cd baseimage`,
+              `cd app`,
               `chmod +x ./build.sh && ./build.sh`
             ],
           }

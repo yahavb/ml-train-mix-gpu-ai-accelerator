@@ -2,7 +2,7 @@
 ```
 export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
 export AWS_REGION=us-west-2
-export BASE_REPO=baseimage
+export BASE_REPO=perceiver
 export BASE_TAG=multiarch-ubuntu
 export BASE_ARM_TAG=arm64
 export BASE_AMD_TAG=amd64

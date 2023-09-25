@@ -505,7 +505,7 @@
         {
          "Ref": "BASEIMAGEAMDTAG"
         },
-        "\\\"\",\n        \"cd baseimage\",\n        \"chmod +x ./build.sh && ./build.sh\"\n      ]\n    }\n  },\n  \"artifacts\": {\n    \"files\": [\n      \"imageDetail.json\"\n    ]\n  }\n}"
+        "\\\"\",\n        \"cd app\",\n        \"chmod +x ./build.sh && ./build.sh\"\n      ]\n    }\n  },\n  \"artifacts\": {\n    \"files\": [\n      \"imageDetail.json\"\n    ]\n  }\n}"
        ]
       ]
      },
@@ -569,7 +569,7 @@
         {
          "Ref": "BASEIMAGETAG"
         },
-        "\\\"\",\n        \"cd baseimage\",\n        \"chmod +x ./assemble_multiarch_image.sh && ./assemble_multiarch_image.sh\"\n      ]\n    }\n  },\n  \"artifacts\": {\n    \"files\": [\n      \"imageDetail.json\"\n    ]\n  }\n}"
+        "\\\"\",\n        \"cd app\",\n        \"chmod +x ./assemble_multiarch_image.sh && ./assemble_multiarch_image.sh\"\n      ]\n    }\n  },\n  \"artifacts\": {\n    \"files\": [\n      \"imageDetail.json\"\n    ]\n  }\n}"
        ]
       ]
      },

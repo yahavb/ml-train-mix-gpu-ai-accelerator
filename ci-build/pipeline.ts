@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-import { BasePipelineStack } from './base-pipeline-stack';
+import { PipelineStack } from './pipeline-stack';
 
 const app = new cdk.App();
-new BasePipelineStack(app, 'BasePipelineStack', {
+new PipelineStack(app, 'PipelineStack', {
   env: { account: process.env.AWS_ACCOUNT_ID, region: process.env.AWS_REGION},
 });
