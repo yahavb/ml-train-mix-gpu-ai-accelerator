@@ -106,7 +106,7 @@ export class BasePipelineStack extends Stack {
               `export BASE_REPO="${BASE_REPO.valueAsString}"`,
               `export BASE_IMAGE_TAG="${BASE_IMAGE_AMD_TAG.valueAsString}"`,
               `export ARCH="${BASE_IMAGE_AMD_TAG.valueAsString}"`,
-              `cd baseimage`,
+              `cd app`,
               `chmod +x ./build.sh && ./build.sh`
             ],
           }
@@ -139,7 +139,7 @@ export class BasePipelineStack extends Stack {
               `export BASE_IMAGE_AMD_TAG="${BASE_IMAGE_AMD_TAG.valueAsString}"`,
               `export BASE_IMAGE_ARM_TAG="${BASE_IMAGE_ARM_TAG.valueAsString}"`,
               `export BASE_IMAGE_TAG="${BASE_IMAGE_TAG.valueAsString}"`,
-              `cd baseimage`,
+              `cd app`,
               `chmod +x ./assemble_multiarch_image.sh && ./assemble_multiarch_image.sh`
             ],
           }
