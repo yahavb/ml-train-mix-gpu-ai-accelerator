@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd /home/ubuntu
+
 if [ -n "$SUPPORTED_INSTANCES" ]; then
   echo "need to know what instances are supported"
   echo "example export SUPPORTED_INSTANCES=trn1n.32xlarge,g5.16xlarge"
@@ -24,9 +26,11 @@ else
   echo $instance_type" is not supported, please use one of the instances in "$supported_instances
   exit
 fi
-
+echo "in start.sh before  /home/ubuntu/post_build_neuron.sh"
+pwd
+ls -l 
 if [[ $instance_type == "trn1n.32xlarge" ]]; then
-  ~/post_build_neuron.sh
-  . aws_neuron_venv_pytorch/bin/activate
-  ~/train_kinetics_trn.sh
+  /home/ubuntu/post_build_neuron.sh
+  . /home/ubuntu/aws_neuron_venv_pytorch/bin/activate
+  /home/ubuntu/train_kinetics_trn.sh
 fi
