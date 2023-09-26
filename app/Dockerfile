@@ -1,6 +1,6 @@
 FROM public.ecr.aws/docker/library/ubuntu:22.04
 
-RUN apt update -y && apt-get install -y python3-dev python3.10-venv g++ curl wget
+RUN apt update -y && apt-get install -y python3-dev python3.10-venv g++ curl wget gnupg2
 COPY * /home/ubuntu/
 
 RUN ls -l /home/ubuntu
