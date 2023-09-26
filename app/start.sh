@@ -31,6 +31,6 @@ pwd
 ls -l 
 if [[ $instance_type == "trn1n.32xlarge" ]]; then
   /home/ubuntu/post_build_neuron.sh
-  . /home/ubuntu/aws_neuron_venv_pytorch/bin/activate
+  /home/ubuntu/prep_dataset.sh
   /home/ubuntu/train_kinetics_trn.sh
 fi
