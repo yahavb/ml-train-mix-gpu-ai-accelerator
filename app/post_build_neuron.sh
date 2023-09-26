@@ -65,4 +65,4 @@ python -m pip install neuronx-cc==2.* torch-neuronx torchvision
 echo "neuron" > $AI_CHIP
 deactivate
 
-./prep_dataset.sh
+/home/ubuntu/prep_dataset.sh
