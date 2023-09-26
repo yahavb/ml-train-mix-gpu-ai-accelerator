@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 cd /home/ubuntu
 #install per - https://awsdocs-neuron.readthedocs-hosted.com/en/latest/general/setup/neuron-setup/pytorch/neuronx/ubuntu/torch-neuronx-ubuntu22.html#setup-torch-neuronx-ubuntu22

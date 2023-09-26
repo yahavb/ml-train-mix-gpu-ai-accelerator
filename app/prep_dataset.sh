@@ -1,9 +1,13 @@
 #!/bin/bash
 
+mkdir /home/ubuntu/datasets
+mv /home/ubuntu/__init__.py /home/ubuntu/datasets
+mv /home/ubuntu/kinetics.py /home/ubuntu/datasets
+
 # donwload the Kinetic dataset that starts with the latter a (index 0-18)
 # TODO generalize for all content - copy to FSx
 
-mkdir $DATASET_DIR
+mkdir -p $DATASET_DIR/train
 cd $DATASET_DIR/train
 
 for (( i=0;i<=9;i++ )); do wget "https://s3.amazonaws.com/kinetics/700_2020/train/k700_train_00"$i".tar.gz"; tar xzf "k700_train_00"$i".tar.gz"; done
