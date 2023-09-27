@@ -136,7 +136,7 @@ RUN wget https://raw.githubusercontent.com/aws-neuron/aws-neuron-samples/master/
 RUN ${PIP} install -r requirements.txt
 
 # Add a basic environment test script to the container image
-COPY * *
+COPY * /
 RUN echo "export PATH=/opt/aws/neuron/bin:\$PATH" >> /root/.bashrc
 RUN echo "export TERM=screen" >> /root/.bashrc
 CMD ["/bin/bash"]
