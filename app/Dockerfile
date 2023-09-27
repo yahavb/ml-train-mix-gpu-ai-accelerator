@@ -4,7 +4,7 @@
 # To run on EC2 Inf1 instances with AWS DLAMI:
 #    docker run -it --device=/dev/neuron0 neuron-container:pytorch
 
-FROM public.ecr.aws/docker/library/ubuntu:23.10
+FROM public.ecr.aws/docker/library/ubuntu:22.10
 ARG PIP="python3 -m pip"
 
 # This arg required to stop docker build waiting for region configuration while installing tz data from ubuntu 20
@@ -28,9 +28,6 @@ ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/opt/amazon/openmpi/lib64"
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/lib"
 
 RUN uname -a
-RUN apt-get update -y
-RUN apt-get install -y python3-full
-RUN python3 -m pip install -U pip
 
 RUN until apt-get update --fix-missing; do echo "Retrying apt-get update"; sleep 1; done \
  && apt-get install -y --no-install-recommends \
