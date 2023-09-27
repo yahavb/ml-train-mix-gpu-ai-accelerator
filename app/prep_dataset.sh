@@ -12,7 +12,7 @@ mv /home/ubuntu/kinetics.py /home/ubuntu/datasets
 mkdir -p $DATASET_DIR/train
 cd $DATASET_DIR/train
 
-for (( i=0;i<=9;i++ )); do wget "https://s3.amazonaws.com/kinetics/700_2020/train/k700_train_00"$i".tar.gz"; tar xzf "k700_train_00"$i".tar.gz"; done
+for (( i=1;i<=9;i++ )); do wget "https://s3.amazonaws.com/kinetics/700_2020/train/k700_train_00"$i".tar.gz"; tar xzf "k700_train_00"$i".tar.gz"; done
 
 for (( i=10;i<=18;i++ )); do wget "https://s3.amazonaws.com/kinetics/700_2020/train/k700_train_00"$i".tar.gz"; tar xzf "k700_train_00"$i".tar.gz"; done
 
@@ -20,7 +20,7 @@ IFS=$'\n';for i in `find . -maxdepth 1 -type d`; do dir=$(echo $i | sed 's/ /_/g
 
 cd $DATASET_DIR/val
 
-for (( i=0;i<=9;i++ )); do wget "https://s3.amazonaws.com/kinetics/700_2020/val/k700_val_00"$i".tar.gz"; tar xzf "k700_val_00"$i".tar.gz"; done
+for (( i=1;i<=9;i++ )); do wget "https://s3.amazonaws.com/kinetics/700_2020/val/k700_val_00"$i".tar.gz"; tar xzf "k700_val_00"$i".tar.gz"; done
 
 for (( i=10;i<=18;i++ )); do wget "https://s3.amazonaws.com/kinetics/700_2020/val/k700_val_0"$i".tar.gz"; tar xzf "k700_val_0"$i".tar.gz"; done
 
