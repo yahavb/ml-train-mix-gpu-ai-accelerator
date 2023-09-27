@@ -18,8 +18,8 @@ apt-get install aws-neuronx-tools=2.* -y
 export PATH=/opt/aws/neuron/bin:$PATH
 
 apt-get install -y python3.10-venv g++ 
-#python3.10 -m venv aws_neuron_venv_pytorch
-#. aws_neuron_venv_pytorch/bin/activate
+python3.10 -m venv aws_neuron_venv_pytorch
+. aws_neuron_venv_pytorch/bin/activate
 python -m pip install -U pip
 pip install ipykernel
 python3.10 -m ipykernel install --user --name aws_neuron_venv_pytorch --display-name "Python (torch-neuronx)"
