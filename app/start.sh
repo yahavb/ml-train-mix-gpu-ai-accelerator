@@ -26,15 +26,13 @@ else
   echo $instance_type" is not supported, please use one of the instances in "$supported_instances
   exit
 fi
-echo "in start.sh before  /home/ubuntu/post_build_neuron.sh"
 pwd
 ls -l 
 if [[ $instance_type == "trn1n.32xlarge" ]]; then
+  echo "in start.sh before  /home/ubuntu/post_build_neuron.sh"
   /home/ubuntu/post_build_neuron.sh
+  echo "in start.sh before  /home/ubuntu/prep_dataset.sh"
   /home/ubuntu/prep_dataset.sh
+  echo "in start.sh before  /home/ubuntu/train_kinetics_trn.sh"
   /home/ubuntu/train_kinetics_trn.sh
 fi
-while true
-do
-	sleep(100)
-done

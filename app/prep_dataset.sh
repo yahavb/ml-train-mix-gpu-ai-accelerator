@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "in prep_dataset.sh"
+
 mkdir /home/ubuntu/datasets
 mv /home/ubuntu/__init__.py /home/ubuntu/datasets
 mv /home/ubuntu/kinetics.py /home/ubuntu/datasets
@@ -23,3 +25,5 @@ for (( i=0;i<=9;i++ )); do wget "https://s3.amazonaws.com/kinetics/700_2020/val/
 for (( i=10;i<=18;i++ )); do wget "https://s3.amazonaws.com/kinetics/700_2020/val/k700_val_0"$i".tar.gz"; tar xzf "k700_val_0"$i".tar.gz"; done
 
 IFS=$'\n';for i in `find . -maxdepth 1 -type d`; do dir=$(echo $i | sed 's/ /_/g');mv $i $dir ;done
+
+echo "finished loading the data"
