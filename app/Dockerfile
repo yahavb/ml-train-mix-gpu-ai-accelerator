@@ -128,14 +128,6 @@ RUN rm -rf /var/lib/apt/lists/* \
 # NOTE: Preceding Docker statements build a standard Neuron-compatible container with EFA support. Add your
 #   training script and dependencies below this line
 
-# Download BERT pretraining script and requirements.txt from GitHub
-RUN wget https://raw.githubusercontent.com/aws-neuron/aws-neuron-samples/master/torch-neuronx/training/dp_bert_hf_pretrain/adamw_fp32_optim_params.py
-RUN wget https://raw.githubusercontent.com/aws-neuron/aws-neuron-samples/master/torch-neuronx/training/dp_bert_hf_pretrain/dp_bert_large_hf_pretrain_hdf5.py
-RUN wget https://raw.githubusercontent.com/aws-neuron/aws-neuron-samples/master/torch-neuronx/training/dp_bert_hf_pretrain/lamb.py
-RUN wget https://raw.githubusercontent.com/aws-neuron/aws-neuron-samples/master/torch-neuronx/training/dp_bert_hf_pretrain/requirements.txt
-RUN ${PIP} install -r requirements.txt
-
-# Add a basic environment test script to the container image
 COPY * /
 RUN echo "export PATH=/opt/aws/neuron/bin:\$PATH" >> /root/.bashrc
 RUN echo "export TERM=screen" >> /root/.bashrc
