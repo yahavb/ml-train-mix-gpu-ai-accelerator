@@ -27,8 +27,10 @@ ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/opt/amazon/efa/lib64"
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/opt/amazon/openmpi/lib64"
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/lib"
 
+RUN uname -a
 RUN apt-get update -y
 RUN apt-get install -y python3-full
+RUN python3 -m pip install -U pip
 
 RUN until apt-get update --fix-missing; do echo "Retrying apt-get update"; sleep 1; done \
  && apt-get install -y --no-install-recommends \
