@@ -1,12 +1,12 @@
 FROM public.ecr.aws/amazonlinux/amazonlinux:2023
 
 # Configure Linux for Neuron repository updates
-RUN tee /etc/yum.repos.d/neuron.repo > /dev/null <<EOF 
-[neuron] 
-name=Neuron YUM Repository 
-baseurl=https://yum.repos.neuron.amazonaws.com 
-enabled=1
-metadata_expire=0 
+RUN tee /etc/yum.repos.d/neuron.repo > /dev/null <<EOF \
+[neuron] \
+name=Neuron YUM Repository \
+baseurl=https://yum.repos.neuron.amazonaws.com \
+enabled=1 \
+metadata_expire=0 \
 EOF  
 RUN rpm --import https://yum.repos.neuron.amazonaws.com/GPG-PUB-KEY-AMAZON-AWS-NEURON.PUB
 
