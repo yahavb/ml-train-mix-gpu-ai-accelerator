@@ -4,8 +4,8 @@
 # To run on EC2 Inf1 instances with AWS DLAMI:
 #    docker run -it --device=/dev/neuron0 neuron-container:pytorch
 
-FROM public.ecr.aws/docker/library/ubuntu:20.04
-ARG PIP="python3.8 -m pip"
+FROM public.ecr.aws/docker/library/ubuntu:22.04
+ARG PIP="python3.10 -m pip"
 
 # This arg required to stop docker build waiting for region configuration while installing tz data from ubuntu 20
 ARG DEBIAN_FRONTEND=noninteractive
@@ -58,8 +58,8 @@ RUN until apt-get update --fix-missing; do echo "Retrying apt-get update"; sleep
     gnupg2 \
     gpg-agent \
     pciutils \
-    python3.8-full \
-    python3.8-dev \
+    python3.10-full \
+    python3.10-dev \
     --fix-missing \
  && rm -rf /var/lib/apt/lists/* \
  && apt-get clean
@@ -78,7 +78,7 @@ RUN apt-get update \
 
 WORKDIR /
 
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3.8 get-pip.py && python3.8 -m pip install --upgrade pip
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3.10 get-pip.py && python3.10 -m pip install --upgrade pip
 
 RUN ${PIP} install --no-cache-dir -U \
     "pyyaml>=5.4,<5.5" \
@@ -108,16 +108,16 @@ RUN ${PIP} install --no-cache-dir -U \
     "python-etcd"
 
 # EFA Installer does apt get. Make sure to run apt update before that
-RUN apt-get update
-RUN cd $HOME \
-    && curl -O https://efa-installer.amazonaws.com/aws-efa-installer-latest.tar.gz \
-    && wget https://efa-installer.amazonaws.com/aws-efa-installer.key && gpg --import aws-efa-installer.key \
-    && cat aws-efa-installer.key | gpg --fingerprint \
-    && wget https://efa-installer.amazonaws.com/aws-efa-installer-latest.tar.gz.sig && gpg --verify ./aws-efa-installer-latest.tar.gz.sig \
-    && tar -xf aws-efa-installer-latest.tar.gz \
-    && cd aws-efa-installer \
-    && ./efa_installer.sh -y -g -d --skip-kmod --skip-limit-conf --no-verify \
-    && cd $HOME
+#RUN apt-get update
+#RUN cd $HOME \
+#    && curl -O https://efa-installer.amazonaws.com/aws-efa-installer-latest.tar.gz \
+#    && wget https://efa-installer.amazonaws.com/aws-efa-installer.key && gpg --import aws-efa-installer.key \
+#    && cat aws-efa-installer.key | gpg --fingerprint \
+#    && wget https://efa-installer.amazonaws.com/aws-efa-installer-latest.tar.gz.sig && gpg --verify ./aws-efa-installer-latest.tar.gz.sig \
+#    && tar -xf aws-efa-installer-latest.tar.gz \
+#    && cd aws-efa-installer \
+#    && ./efa_installer.sh -y -g -d --skip-kmod --skip-limit-conf --no-verify \
+#    && cd $HOME
 
 # Clean up after apt update
 RUN rm -rf /var/lib/apt/lists/* \
