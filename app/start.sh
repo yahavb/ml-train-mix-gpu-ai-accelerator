@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/ubuntu
+cd /
 
 if [ -n "$SUPPORTED_INSTANCES" ]; then
   echo "need to know what instances are supported"
@@ -29,12 +29,12 @@ fi
 pwd
 ls -l 
 if [[ $instance_type == "trn1n.32xlarge" ]]; then
-  echo "in start.sh before  /home/ubuntu/post_build_neuron.sh"
-  /home/ubuntu/post_build_neuron.sh
+  #echo "in start.sh before  /home/ubuntu/post_build_neuron.sh"
+  #./home/ubuntu/post_build_neuron.sh
   echo "in start.sh before  /home/ubuntu/prep_dataset.sh"
-  /home/ubuntu/prep_dataset.sh
+  /prep_dataset.sh
   echo "in start.sh before  /home/ubuntu/train_kinetics_trn.sh"
-  /home/ubuntu/train_kinetics_trn.sh
+  /train_kinetics_trn.sh
 fi
 
 while true; do sleep 1000; done

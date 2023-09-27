@@ -2,9 +2,9 @@
 
 echo "in prep_dataset.sh"
 
-mkdir /home/ubuntu/datasets
-mv /home/ubuntu/__init__.py /home/ubuntu/datasets
-mv /home/ubuntu/kinetics.py /home/ubuntu/datasets
+mkdir /datasets
+mv /__init__.py /datasets
+mv /kinetics.py /datasets
 
 # donwload the Kinetic dataset that starts with the latter a (index 0-18)
 # TODO generalize for all content - copy to FSx

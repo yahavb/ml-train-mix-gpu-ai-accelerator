@@ -1,8 +1,5 @@
 echo "in train_kinetics_trn.sh"
 
-cd /home/ubuntu
-. aws_neuron_venv_pytorch/bin/activate
-
 export MALLOC_ARENA_MAX=32
 XLA_USE_BF16=1 NEURON_CC_FLAGS='--retry_failed_compilation --internal-max-instruction-limit=10000000 --enable-experimental-O1 --internal-build-with-users --enable-saturate-infinity' torchrun --nproc_per_node=32 train_trn.py \
   --config_file_path config/main.yaml \

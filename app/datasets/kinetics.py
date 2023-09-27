@@ -9,7 +9,7 @@ from torchvision.transforms import Resize
 from typing import Tuple
 
 
-_ROOT = "/home/ubuntu/dataset"
+_ROOT = "/dataset"
 _TRAIN_METADATA_FILE = "train_metadata.th"
 _TRAIN_METADATA_FILE_SAMPLED = "train_metadata_sampled.th"
 _VAL_METADATA_FILE = "val_metadata.th"

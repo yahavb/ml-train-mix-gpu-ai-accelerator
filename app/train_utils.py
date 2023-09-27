@@ -172,7 +172,7 @@ class Logger:
 def build_train_parser():
   parser = argparse.ArgumentParser()
   parser.add_argument('--dataset', type=str, default="synthetic", help="dataset name.")
-  parser.add_argument('--dataset_dir', type=str, default="/home/ubuntu/dataset", help="dataset directory.")
+  parser.add_argument('--dataset_dir', type=str, default="/dataset", help="dataset directory.")
   parser.add_argument('--config_file_path', type=str, default="config/main.yaml", help="model config file path.")
   parser.add_argument('--logdir', type=str, default="log_training", help="Training log directory.")
   parser.add_argument('--batch_size', type=int, default=8, help="Batch size per core used in training.")
