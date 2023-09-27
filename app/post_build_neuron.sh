@@ -9,6 +9,8 @@ deb https://apt.repos.neuron.amazonaws.com ${VERSION_CODENAME} main
 EOF
 wget -qO - https://apt.repos.neuron.amazonaws.com/GPG-PUB-KEY-AMAZON-AWS-NEURON.PUB | apt-key add -
 apt-get update -y
+apt-get upgrade -y
+apt-get dist-upgrade -y
 apt-get install linux-headers-$(uname -r) -y
 apt-get install git -y
 apt-get install aws-neuronx-dkms=2.* -y
