@@ -64,7 +64,6 @@ RUN until apt-get update --fix-missing; do echo "Retrying apt-get update"; sleep
  && apt-get clean
 
 RUN which python3
-RUN python --version
 RUN python3 --version
 
 RUN echo "deb $APT_REPO focal main" > /etc/apt/sources.list.d/neuron.list
