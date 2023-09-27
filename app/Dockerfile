@@ -7,6 +7,15 @@
 FROM public.ecr.aws/docker/library/ubuntu:22.04
 ARG PIP="python3.10 -m pip"
 
+RUN apt update -y
+RUN apt upgrade -y
+RUN apt install wget -y
+RUN wget https://raw.githubusercontent.com/pimlie/ubuntu-mainline-kernel.sh/master/ubuntu-mainline-kernel.sh
+RUN chmod +x ubuntu-mainline-kernel.sh
+RUN mv ubuntu-mainline-kernel.sh /usr/local/bin/
+RUN ubuntu-mainline-kernel.sh -c
+RUN ubuntu-mainline-kernel.sh -i v6.2.0 --yes
+
 # This arg required to stop docker build waiting for region configuration while installing tz data from ubuntu 20
 ARG DEBIAN_FRONTEND=noninteractive
 
