@@ -63,7 +63,7 @@ RUN until apt-get update --fix-missing; do echo "Retrying apt-get update"; sleep
  && rm -rf /var/lib/apt/lists/* \
  && apt-get clean
 
-RUN which python
+RUN which python3
 RUN python --version
 RUN python3 --version
 
