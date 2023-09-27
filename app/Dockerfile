@@ -63,6 +63,10 @@ RUN until apt-get update --fix-missing; do echo "Retrying apt-get update"; sleep
  && rm -rf /var/lib/apt/lists/* \
  && apt-get clean
 
+RUN which python
+RUN python --version
+RUN python3 --version
+
 RUN echo "deb $APT_REPO focal main" > /etc/apt/sources.list.d/neuron.list
 RUN wget -qO - $APT_REPO/GPG-PUB-KEY-AMAZON-AWS-NEURON.PUB | apt-key add -
 
