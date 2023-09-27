@@ -38,7 +38,6 @@ RUN until apt-get update --fix-missing; do echo "Retrying apt-get update"; sleep
     jq \
     libopencv-dev \
     libglib2.0-0 \
-    libgl1-mesa-gl \
     libsm6 \
     libxext6 \
     libxrender-dev \
@@ -59,7 +58,7 @@ RUN until apt-get update --fix-missing; do echo "Retrying apt-get update"; sleep
     gnupg2 \
     gpg-agent \
     pciutils \
-    python3.10-full \
+    python3.10 \
     python3.10-dev \
     --fix-missing \
  && rm -rf /var/lib/apt/lists/* \
