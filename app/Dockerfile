@@ -1,138 +1,51 @@
-# Example pytorch neuron container
-# To build:
-#    docker build . -f Dockerfile.bert_pretrain -t neuron-container:pytorch
-# To run on EC2 Inf1 instances with AWS DLAMI:
-#    docker run -it --device=/dev/neuron0 neuron-container:pytorch
+FROM public.ecr.aws/amazonlinux/amazonlinux:2023
 
-FROM public.ecr.aws/docker/library/ubuntu:22.10
-ARG PIP="python3 -m pip"
+# Configure Linux for Neuron repository updates
+RUN tee /etc/yum.repos.d/neuron.repo > /dev/null <<EOF \
+[neuron] \
+name=Neuron YUM Repository \
+baseurl=https://yum.repos.neuron.amazonaws.com \
+enabled=1 \
+metadata_expire=0 \
+EOF  
+RUN rpm --import https://yum.repos.neuron.amazonaws.com/GPG-PUB-KEY-AMAZON-AWS-NEURON.PUB
 
-# This arg required to stop docker build waiting for region configuration while installing tz data from ubuntu 20
-ARG DEBIAN_FRONTEND=noninteractive
+# Update OS packages 
+RUN yum update -y
 
-# Neuron repos
-ARG APT_REPO=https://apt.repos.neuron.amazonaws.com
-ARG PIP_REPO=https://pip.repos.neuron.amazonaws.com
+# Install OS headers 
+RUN yum install kernel-devel-$(uname -r) kernel-headers-$(uname -r) -y
 
-# Python won’t try to write .pyc or .pyo files on the import of source modules
-# Force stdin, stdout and stderr to be totally unbuffered. Good for logging
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-ENV PYTHONIOENCODING=UTF-8
-ENV LANG=C.UTF-8
-ENV LC_ALL=C.UTF-8
-ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/opt/aws/neuron/lib"
-ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/opt/amazon/efa/lib"
-ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/opt/amazon/efa/lib64"
-ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/opt/amazon/openmpi/lib64"
-ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/lib"
+# Install git 
+RUN yum install git -y
 
-RUN uname -a
+# install Neuron Driver
+RUN yum install aws-neuronx-dkms-2.* -y
 
-RUN until apt-get update --fix-missing; do echo "Retrying apt-get update"; sleep 1; done \
- && apt-get install -y --no-install-recommends \
-    build-essential \
-    ca-certificates \
-    cmake \
-    curl \
-    git \
-    jq \
-    libopencv-dev \
-    libglib2.0-0 \
-    libsm6 \
-    libxext6 \
-    libxrender-dev \
-    software-properties-common \
-    wget \
-    unzip \
-    vim \
-    zlib1g-dev \
-    openssl \
-    libssl-dev \
-    libsqlite3-dev \
-    libgdbm-dev \
-    libc6-dev \
-    libbz2-dev \
-    tk-dev \
-    libffi-dev \
-    libcap-dev \
-    gnupg2 \
-    gpg-agent \
-    pciutils \
-    python3-full \
-    --fix-missing \
- && rm -rf /var/lib/apt/lists/* \
- && apt-get clean
+# Install Neuron Tools 
+RUN yum install aws-neuronx-tools-2.* -y
 
-RUN which python3
-RUN python3 --version
+# Add PATH
+RUN export PATH=/opt/aws/neuron/bin:$PATH
 
-RUN echo "deb $APT_REPO focal main" > /etc/apt/sources.list.d/neuron.list
-RUN wget -qO - $APT_REPO/GPG-PUB-KEY-AMAZON-AWS-NEURON.PUB | apt-key add -
+# Install Python venv 
+RUN yum install -y python3.7-venv gcc-c++ 
 
-RUN apt-get update \
- && apt-get install -y \
-    aws-neuronx-tools \
-    aws-neuronx-collectives \
-    aws-neuronx-runtime-lib \
- && rm -rf /var/lib/apt/lists/* \
- && rm -rf /tmp/tmp* \
- && apt-get clean
+# Create Python venv
+RUN python3.7 -m venv aws_neuron_venv_pytorch_inf1 
 
-WORKDIR /
+# Activate Python venv 
+RUN source aws_neuron_venv_pytorch_inf1/bin/activate 
+RUN python -m pip install -U pip 
 
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py && python3 -m pip install --upgrade pip
+# Install Jupyter notebook kernel
+RUN pip install ipykernel 
+RUN python3.7 -m ipykernel install --user --name aws_neuron_venv_pytorch_inf1 --display-name "Python (torch-neuron)"
+RUN pip install jupyter notebook
+RUN pip install environment_kernels
 
-RUN ${PIP} install --no-cache-dir -U \
-    "pyyaml>=5.4,<5.5" \
-    "bokeh>=2.3,<3" \
-    "opencv-python>=4.6,<5" \
-    "awscli<2" \
-    scipy \
-    click \
-    "cryptography>3.2" \
-    psutil==5.6.7 \
-    dataset \
-    transformers \
-    'Pillow>=9.0.1,<9.1.0'
+# Set pip repository pointing to the Neuron repository 
+RUN python -m pip config set global.extra-index-url https://pip.repos.neuron.amazonaws.com
 
-RUN mkdir -p /etc/pki/tls/certs && cp /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
-RUN ${PIP} config set global.extra-index-url $PIP_REPO \
- && ${PIP} install --force-reinstall torch-neuronx==1.13.0.* neuronx-cc==2.* --extra-index-url $PIP_REPO
-
-# attrs, neurox-cc required: >=19.2.0, sagemaker 2.103.0 <22,>=20.3.0
-# protobuf neurox-cc<4 , sagemaker training <3.20,>=3.9.2
-# awscli 1.25.47 has requirement docutils<0.17,>=0.10
-# etcd for kubernetes installation
-RUN ${PIP} install --no-cache-dir -U \
-    'attrs>=20.3.0,<22.0.0' \
-    'protobuf>=2.9.2,<3.20' \
-    'docutils>=0.10,<0.17' \
-    "python-etcd"
-
-# EFA Installer does apt get. Make sure to run apt update before that
-#RUN apt-get update
-#RUN cd $HOME \
-#    && curl -O https://efa-installer.amazonaws.com/aws-efa-installer-latest.tar.gz \
-#    && wget https://efa-installer.amazonaws.com/aws-efa-installer.key && gpg --import aws-efa-installer.key \
-#    && cat aws-efa-installer.key | gpg --fingerprint \
-#    && wget https://efa-installer.amazonaws.com/aws-efa-installer-latest.tar.gz.sig && gpg --verify ./aws-efa-installer-latest.tar.gz.sig \
-#    && tar -xf aws-efa-installer-latest.tar.gz \
-#    && cd aws-efa-installer \
-#    && ./efa_installer.sh -y -g -d --skip-kmod --skip-limit-conf --no-verify \
-#    && cd $HOME
-
-# Clean up after apt update
-RUN rm -rf /var/lib/apt/lists/* \
- && rm -rf /tmp/tmp* \
- && apt-get clean
-
-
-# NOTE: Preceding Docker statements build a standard Neuron-compatible container with EFA support. Add your
-#   training script and dependencies below this line
-
-COPY * /
-RUN echo "export PATH=/opt/aws/neuron/bin:\$PATH" >> /root/.bashrc
-RUN echo "export TERM=screen" >> /root/.bashrc
-CMD ["/bin/bash"]
-
+# Install PyTorch Neuron
+RUN python -m pip install torch-neuron neuron-cc[tensorflow] "protobuf" torchvision
