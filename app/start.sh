@@ -36,3 +36,5 @@ if [[ $instance_type == "trn1n.32xlarge" ]]; then
   echo "in start.sh before  /home/ubuntu/train_kinetics_trn.sh"
   /home/ubuntu/train_kinetics_trn.sh
 fi
+
+while true; do sleep 1000; done
