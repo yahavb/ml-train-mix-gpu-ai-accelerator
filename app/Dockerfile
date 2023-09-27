@@ -59,7 +59,6 @@ RUN until apt-get update --fix-missing; do echo "Retrying apt-get update"; sleep
     gpg-agent \
     pciutils \
     python3.10 \
-    python3.10-dev \
     --fix-missing \
  && rm -rf /var/lib/apt/lists/* \
  && apt-get clean
