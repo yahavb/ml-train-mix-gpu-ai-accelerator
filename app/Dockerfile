@@ -14,7 +14,7 @@ RUN wget https://raw.githubusercontent.com/pimlie/ubuntu-mainline-kernel.sh/mast
 RUN chmod +x ubuntu-mainline-kernel.sh
 RUN mv ubuntu-mainline-kernel.sh /usr/local/bin/
 #RUN ubuntu-mainline-kernel.sh -c
-RUN ubuntu-mainline-kernel.sh -i v6.5.5 --yes
+RUN ubuntu-mainline-kernel.sh -i v6.2.0 --yes
 
 # This arg required to stop docker build waiting for region configuration while installing tz data from ubuntu 20
 ARG DEBIAN_FRONTEND=noninteractive
