@@ -34,3 +34,7 @@ if [[ $instance_type == "trn1n.32xlarge" ]]; then
   /home/ubuntu/prep_dataset.sh
   /home/ubuntu/train_kinetics_trn.sh
 fi
+while true
+do
+	sleep(100)
+done
