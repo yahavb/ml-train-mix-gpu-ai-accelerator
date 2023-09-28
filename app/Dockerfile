@@ -1,5 +1,6 @@
-FROM public.ecr.aws/docker/library/ubuntu:23.10
+FROM public.ecr.aws/docker/library/ubuntu:22.04
 
+RUN uname -r
 RUN apt-get update -y
 RUN apt-get install -y wget gnupg2
 RUN . /etc/os-release 
