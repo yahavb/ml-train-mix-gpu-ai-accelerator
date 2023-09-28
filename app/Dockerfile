@@ -87,6 +87,7 @@ RUN ${PIP} install --no-cache-dir -U \
     "bokeh>=2.3,<3" \
     "opencv-python>=4.6,<5" \
     "awscli<2" \
+    torchvision \
     scipy \
     click \
     "cryptography>3.2" \
