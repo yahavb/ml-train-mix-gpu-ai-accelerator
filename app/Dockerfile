@@ -88,6 +88,7 @@ RUN ${PIP} install --no-cache-dir -U \
     "opencv-python>=4.6,<5" \
     "awscli<2" \
     torchvision \
+    einops \
     scipy \
     click \
     "cryptography>3.2" \
