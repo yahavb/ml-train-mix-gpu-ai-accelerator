@@ -110,16 +110,16 @@ RUN ${PIP} install --no-cache-dir -U \
     "python-etcd"
 
 # EFA Installer does apt get. Make sure to run apt update before that
-RUN apt-get update
-RUN cd $HOME \
-    && curl -O https://efa-installer.amazonaws.com/aws-efa-installer-latest.tar.gz \
-    && wget https://efa-installer.amazonaws.com/aws-efa-installer.key && gpg --import aws-efa-installer.key \
-    && cat aws-efa-installer.key | gpg --fingerprint \
-    && wget https://efa-installer.amazonaws.com/aws-efa-installer-latest.tar.gz.sig && gpg --verify ./aws-efa-installer-latest.tar.gz.sig \
-    && tar -xf aws-efa-installer-latest.tar.gz \
-    && cd aws-efa-installer \
-    && ./efa_installer.sh -y -g -d --skip-kmod --skip-limit-conf --no-verify \
-    && cd $HOME
+#RUN apt-get update
+#RUN cd $HOME \
+#    && curl -O https://efa-installer.amazonaws.com/aws-efa-installer-latest.tar.gz \
+#    && wget https://efa-installer.amazonaws.com/aws-efa-installer.key && gpg --import aws-efa-installer.key \
+#    && cat aws-efa-installer.key | gpg --fingerprint \
+#    && wget https://efa-installer.amazonaws.com/aws-efa-installer-latest.tar.gz.sig && gpg --verify ./aws-efa-installer-latest.tar.gz.sig \
+#    && tar -xf aws-efa-installer-latest.tar.gz \
+#    && cd aws-efa-installer \
+#    && ./efa_installer.sh -y -g -d --skip-kmod --skip-limit-conf --no-verify \
+#    && cd $HOME
 
 # Clean up after apt update
 RUN rm -rf /var/lib/apt/lists/* \
