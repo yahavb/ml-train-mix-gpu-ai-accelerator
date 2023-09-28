@@ -131,7 +131,7 @@ RUN rm -rf /var/lib/apt/lists/* \
 #   training script and dependencies below this line
 
 # Add a basic environment test script to the container image
-COPY assets/dump_env.py /
+COPY * /
 RUN echo "export PATH=/opt/aws/neuron/bin:\$PATH" >> /root/.bashrc
 RUN echo "export TERM=screen" >> /root/.bashrc
 
