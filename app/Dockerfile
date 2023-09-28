@@ -1,11 +1,7 @@
 FROM public.ecr.aws/amazonlinux/amazonlinux:2023
 
 # Configure Linux for Neuron repository updates
-RUN ls -l /etc/yum.repos.d/
-RUN cat /etc/yum.repos.d/amazonlinux.repo 
 COPY neuron.repo /etc/yum.repos.d/neuron.repo
-RUN ls -l /etc/yum.repos.d/
-RUN cat /etc/yum.repos.d/neuron.repo
 RUN rpm --import https://yum.repos.neuron.amazonaws.com/GPG-PUB-KEY-AMAZON-AWS-NEURON.PUB
 
 # Update OS packages 
