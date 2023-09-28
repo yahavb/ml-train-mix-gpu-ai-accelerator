@@ -8,7 +8,8 @@ RUN rpm --import https://yum.repos.neuron.amazonaws.com/GPG-PUB-KEY-AMAZON-AWS-N
 RUN yum update -y
 
 # Install OS headers 
-RUN yum install kernel-devel-$(uname -r) kernel-headers-$(uname -r) -y
+#RUN yum install kernel-devel-$(uname -r) kernel-headers-$(uname -r) -y
+RUN yum install kernel-devel-4.14* kernel-headers-4.14* -y
 
 # Install git 
 RUN yum install git -y
