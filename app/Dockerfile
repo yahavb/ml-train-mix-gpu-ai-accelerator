@@ -1,5 +1,7 @@
 FROM public.ecr.aws/docker/library/ubuntu:23.10
 
+RUN apt-get update -y
+RUN apt-get install -y wget
 RUN . /etc/os-release 
 COPY neuron.list /etc/apt/sources.list.d/neuron.list
 RUN wget -qO - https://apt.repos.neuron.amazonaws.com/GPG-PUB-KEY-AMAZON-AWS-NEURON.PUB | apt-key add -
