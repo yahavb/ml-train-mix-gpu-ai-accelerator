@@ -130,6 +130,8 @@ RUN rm -rf /var/lib/apt/lists/* \
 
 # Add a basic environment test script to the container image
 COPY * /
+RUN mkdir /config
+ADD config/main.yaml /config/main.yaml
 RUN echo "export PATH=/opt/aws/neuron/bin:\$PATH" >> /root/.bashrc
 RUN echo "export TERM=screen" >> /root/.bashrc
 
