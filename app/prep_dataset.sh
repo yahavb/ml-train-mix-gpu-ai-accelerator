@@ -18,6 +18,7 @@ for (( i=10;i<=18;i++ )); do wget "https://s3.amazonaws.com/kinetics/700_2020/tr
 
 IFS=$'\n';for i in `find . -maxdepth 1 -type d`; do dir=$(echo $i | sed 's/ /_/g');mv $i $dir ;done
 
+mkdir -p $DATASET_DIR/val
 cd $DATASET_DIR/val
 
 for (( i=1;i<=9;i++ )); do wget "https://s3.amazonaws.com/kinetics/700_2020/val/k700_val_00"$i".tar.gz"; tar xzf "k700_val_00"$i".tar.gz"; done

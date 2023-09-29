@@ -27,8 +27,6 @@ ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/opt/amazon/efa/lib64"
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/opt/amazon/openmpi/lib64"
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/lib"
 
-RUN uname -a
-
 RUN until apt-get update --fix-missing; do echo "Retrying apt-get update"; sleep 1; done \
  && apt-get install -y --no-install-recommends \
     build-essential \
@@ -98,6 +96,8 @@ RUN ${PIP} install --no-cache-dir -U \
     transformers \
     'Pillow>=9.0.1,<9.1.0'
 
+RUN ${PIP} install -r requirements.txt
+
 RUN mkdir -p /etc/pki/tls/certs && cp /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
 RUN ${PIP} config set global.extra-index-url $PIP_REPO \
  && ${PIP} install --force-reinstall torch-neuronx==1.13.0.* neuronx-cc==2.* --extra-index-url $PIP_REPO
@@ -111,18 +111,6 @@ RUN ${PIP} install --no-cache-dir -U \
     'protobuf>=2.9.2,<3.20' \
     'docutils>=0.10,<0.17' \
     "python-etcd"
-
-# EFA Installer does apt get. Make sure to run apt update before that
-#RUN apt-get update
-#RUN cd $HOME \
-#    && curl -O https://efa-installer.amazonaws.com/aws-efa-installer-latest.tar.gz \
-#    && wget https://efa-installer.amazonaws.com/aws-efa-installer.key && gpg --import aws-efa-installer.key \
-#    && cat aws-efa-installer.key | gpg --fingerprint \
-#    && wget https://efa-installer.amazonaws.com/aws-efa-installer-latest.tar.gz.sig && gpg --verify ./aws-efa-installer-latest.tar.gz.sig \
-#    && tar -xf aws-efa-installer-latest.tar.gz \
-#    && cd aws-efa-installer \
-#    && ./efa_installer.sh -y -g -d --skip-kmod --skip-limit-conf --no-verify \
-#    && cd $HOME
 
 # Clean up after apt update
 RUN rm -rf /var/lib/apt/lists/* \
