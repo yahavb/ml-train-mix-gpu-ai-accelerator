@@ -94,6 +94,7 @@ RUN ${PIP} install --no-cache-dir -U \
     dataset \
     av \
     imageio \
+    "lightning>=2.0.2" \
     "fvcore>=0.1.5" \
     "torch==1.13.1" \
     "torchvision==0.14.1" \
