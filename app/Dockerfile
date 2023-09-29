@@ -85,7 +85,6 @@ RUN ${PIP} install --no-cache-dir -U \
     "bokeh>=2.3,<3" \
     "opencv-python>=4.6,<5" \
     "awscli<2" \
-    torchvision \
     einops \
     tensorboard \
     scipy \
@@ -93,11 +92,17 @@ RUN ${PIP} install --no-cache-dir -U \
     "cryptography>3.2" \
     psutil==5.6.7 \
     dataset \
-    transformers \
+    av \
+    imageio \
+    "fvcore>=0.1.5" \
+    "torch==1.13.1" \
+    "torchvision==0.14.1" \
+    "transformers>=4.29.2" \
+    "transformers>=4.29.2" \
+    "huggingface-hub>=0.15.1" \
+    "fvcore>=0.1.5" \
     'Pillow>=9.0.1,<9.1.0'
 
-ADD requirements.txt  /requirements.txt 
-RUN ${PIP} install -r requirements.txt
 
 RUN mkdir -p /etc/pki/tls/certs && cp /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
 RUN ${PIP} config set global.extra-index-url $PIP_REPO \
