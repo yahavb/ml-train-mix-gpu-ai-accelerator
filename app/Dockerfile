@@ -96,6 +96,7 @@ RUN ${PIP} install --no-cache-dir -U \
     transformers \
     'Pillow>=9.0.1,<9.1.0'
 
+ADD requirements.txt  /requirements.txt 
 RUN ${PIP} install -r requirements.txt
 
 RUN mkdir -p /etc/pki/tls/certs && cp /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
