@@ -89,6 +89,7 @@ RUN ${PIP} install --no-cache-dir -U \
     "awscli<2" \
     torchvision \
     einops \
+    tensorboard \
     scipy \
     click \
     "cryptography>3.2" \
