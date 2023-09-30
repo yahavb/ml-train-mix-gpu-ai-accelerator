@@ -67,7 +67,6 @@ RUN until apt-get update --fix-missing; do echo "Retrying apt-get update"; sleep
 RUN echo "deb $APT_REPO focal main" > /etc/apt/sources.list.d/neuron.list
 RUN wget -qO - $APT_REPO/GPG-PUB-KEY-AMAZON-AWS-NEURON.PUB | apt-key add -
 
-RUN echo "APY-CACHE SHOW"
 ADD install-neuron.sh /install-neuron.sh
 RUN /install-neuron.sh
 #RUN apt-get update \
@@ -91,6 +90,7 @@ RUN ${PIP} install --no-cache-dir -U \
     "opencv-python>=4.6,<5" \
     "awscli<2" \
     einops \
+    poetry \
     tensorboard \
     scipy \
     click \
@@ -111,8 +111,11 @@ RUN ${PIP} install --no-cache-dir -U \
 
 
 RUN mkdir -p /etc/pki/tls/certs && cp /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
-RUN ${PIP} config set global.extra-index-url $PIP_REPO \
- && ${PIP} install --force-reinstall torch-neuronx==1.13.0.* neuronx-cc==2.* --extra-index-url $PIP_REPO
+
+ADD install-pip-neuron.sh /installi-pip-neuron.sh
+RUN /install-pip-neuron.sh
+#RUN ${PIP} config set global.extra-index-url $PIP_REPO \
+# && ${PIP} install --force-reinstall torch-neuronx==1.13.0.* neuronx-cc==2.* --extra-index-url $PIP_REPO
 
 # attrs, neurox-cc required: >=19.2.0, sagemaker 2.103.0 <22,>=20.3.0
 # protobuf neurox-cc<4 , sagemaker training <3.20,>=3.9.2
