@@ -10,6 +10,11 @@ mv /kinetics.py /datasets
 # TODO generalize for all content - copy to FSx
 
 mkdir -p $DATASET_DIR/train
+mkdir -p $DATASET_DIR/val
+mkdir -p /root/.torch/vision/datasets/kinetics/
+aws s3 cp s3://deepmind-kinetics/1723303957.pt /root/.torch/vision/datasets/kinetics/
+aws s3 cp s3://deepmind-kinetics/c785d04824.pt /root/.torch/vision/datasets/kinetics/
+
 cd $DATASET_DIR/train
 
 for (( i=1;i<=9;i++ )); do wget "https://s3.amazonaws.com/kinetics/700_2020/train/k700_train_00"$i".tar.gz"; tar xzf "k700_train_00"$i".tar.gz"; done
@@ -18,7 +23,6 @@ for (( i=1;i<=9;i++ )); do wget "https://s3.amazonaws.com/kinetics/700_2020/trai
 
 IFS=$'\n';for i in `find . -maxdepth 1 -type d`; do dir=$(echo $i | sed 's/ /_/g');mv $i $dir ;done
 
-mkdir -p $DATASET_DIR/val
 cd $DATASET_DIR/val
 
 for (( i=1;i<=9;i++ )); do wget "https://s3.amazonaws.com/kinetics/700_2020/val/k700_val_00"$i".tar.gz"; tar xzf "k700_val_00"$i".tar.gz"; done
