@@ -68,6 +68,7 @@ RUN echo "deb $APT_REPO focal main" > /etc/apt/sources.list.d/neuron.list
 RUN wget -qO - $APT_REPO/GPG-PUB-KEY-AMAZON-AWS-NEURON.PUB | apt-key add -
 
 RUN echo "APY-CACHE SHOW"
+ADD install-neuron.sh /install-neuron.sh
 RUN /install-neuron.sh
 #RUN apt-get update \
 # && if apt-cache show aws-neuronx-tools &>/dev/null; then \
