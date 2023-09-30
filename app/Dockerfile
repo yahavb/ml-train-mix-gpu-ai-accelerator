@@ -112,7 +112,7 @@ RUN ${PIP} install --no-cache-dir -U \
 
 RUN mkdir -p /etc/pki/tls/certs && cp /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
 
-ADD install-pip-neuron.sh /installi-pip-neuron.sh
+ADD install-pip-neuron.sh /install-pip-neuron.sh
 RUN /install-pip-neuron.sh
 #RUN ${PIP} config set global.extra-index-url $PIP_REPO \
 # && ${PIP} install --force-reinstall torch-neuronx==1.13.0.* neuronx-cc==2.* --extra-index-url $PIP_REPO
@@ -142,4 +142,3 @@ RUN mkdir /config
 ADD config/main.yaml /config/main.yaml
 RUN echo "export PATH=/opt/aws/neuron/bin:\$PATH" >> /root/.bashrc
 RUN echo "export TERM=screen" >> /root/.bashrc
-
