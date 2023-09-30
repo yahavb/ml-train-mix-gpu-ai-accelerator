@@ -9,7 +9,8 @@ from torchvision.transforms import Resize
 from typing import Tuple
 
 
-_ROOT = "/dataset"
+#_ROOT = "/dataset"
+_ROOT = os.environ.get('DATASET_DIR')
 _TRAIN_METADATA_FILE = "train_metadata.th"
 _TRAIN_METADATA_FILE_SAMPLED = "train_metadata_sampled.th"
 _VAL_METADATA_FILE = "val_metadata.th"

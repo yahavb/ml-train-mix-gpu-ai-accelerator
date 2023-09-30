@@ -178,12 +178,12 @@ export class PipelineStack extends Stack {
   basebuildpipeline.addStage({
     stageName: 'BaseImageBuild',
     actions: [
-      /*new codepipeline_actions.CodeBuildAction({
+      new codepipeline_actions.CodeBuildAction({
         actionName: 'BaseImageArmBuildX',
         input: sourceOutput,
         runOrder: 1,
         project: base_image_arm_build
-      }),*/
+      }),
       new codepipeline_actions.CodeBuildAction({
         actionName: 'BaseImageAmdBuildX',
         input: sourceOutput,
