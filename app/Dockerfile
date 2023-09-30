@@ -67,6 +67,9 @@ RUN until apt-get update --fix-missing; do echo "Retrying apt-get update"; sleep
 RUN echo "deb $APT_REPO focal main" > /etc/apt/sources.list.d/neuron.list
 RUN wget -qO - $APT_REPO/GPG-PUB-KEY-AMAZON-AWS-NEURON.PUB | apt-key add -
 
+RUN echo "APY-CACHE SHOW"
+RUN apt-cache show aws-neuronx-tools
+
 RUN apt-get update \
  && if apt-cache show aws-neuronx-tools &>/dev/null; then \
       apt-get install -y \
